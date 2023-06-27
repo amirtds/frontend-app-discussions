@@ -9,6 +9,12 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap');
+
+* {
+    font-family: 'Vazirmatn', sans-serif !important;
+}
+
 #post,
 #comment,
 #reply,
