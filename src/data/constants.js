@@ -226,3 +226,8 @@ export const ALLOWED_FILE_TYPES = {
 
 export const MAX_UPLOAD_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
 export const SUPPORTED_FILE_FORMATS = Object.values(ALLOWED_FILE_TYPES).join(',');
+
+export const DISCUSSION_VISIBILITY_TYPES = {
+  IMMEDIATE: 'immediate',
+  POST_FIRST: 'post_first',
+};

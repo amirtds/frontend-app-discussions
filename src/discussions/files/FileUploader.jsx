@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Icon } from '@openedx/paragon';
+import { Button } from '@openedx/paragon';
 import { FileUpload } from '@openedx/paragon/icons';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
@@ -21,13 +21,11 @@ const FileUploader = ({
     const file = event.target.files[0];
     if (!file) return;
 
-    // Validate file type
     if (!Object.keys(ALLOWED_FILE_TYPES).includes(file.type)) {
       onError(intl.formatMessage(messages.invalidFileType));
       return;
     }
 
-    // Validate file size
     if (file.size > MAX_UPLOAD_FILE_SIZE) {
       onError(intl.formatMessage(messages.fileTooLarge, { maxSize: MAX_UPLOAD_FILE_SIZE / (1024 * 1024) }));
       return;
