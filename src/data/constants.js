@@ -217,4 +217,12 @@ export const ALL_ROUTES = []
   .concat([Routes.LEARNERS.POSTS, Routes.LEARNERS.PATH])
   .concat([`${Routes.DISCUSSIONS.PATH}/*`]);
 
-export const MAX_UPLOAD_FILE_SIZE = 1024;
+export const ALLOWED_FILE_TYPES = {
+  'application/pdf': '.pdf',
+  'application/msword': '.doc',
+  'application/vnd.openxmlformats-officedocument.wordprocessingml.document': '.docx',
+  'text/plain': '.txt'
+};
+
+export const MAX_UPLOAD_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
+export const SUPPORTED_FILE_FORMATS = Object.values(ALLOWED_FILE_TYPES).join(',');

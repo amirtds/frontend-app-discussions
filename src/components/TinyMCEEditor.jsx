@@ -41,6 +41,8 @@ import contentCss from '!!raw-loader!tinymce/skins/content/default/content.min.c
 // eslint-disable-next-line import/no-unresolved
 import contentUiCss from '!!raw-loader!tinymce/skins/ui/oxide/content.min.css';
 
+import FileUploader from '../discussions/files/FileUploader';
+
 /* istanbul ignore next */
 const TinyMCEEditor = (props) => {
   // note that skin and content_css is disabled to avoid the normal
@@ -123,8 +125,26 @@ const TinyMCEEditor = (props) => {
     }
   }, [enableInContextSidebar]);
 
+  const handleFileUpload = useCallback((url, filename) => {
+    // Insert file link into editor
+    editor.insertContent(`<a href="${url}" target="_blank">${filename}</a>`);
+  }, [editor]);
+
+  const handleUploadError = useCallback((error) => {
+    setShowImageWarning(true);
+    setErrorMessage(error);
+  }, []);
+
   return (
     <>
+      <div className="editor-toolbar">
+        <FileUploader
+          courseId={courseId}
+          threadId={postId}
+          onUploadComplete={handleFileUpload}
+          onError={handleUploadError}
+        />
+      </div>
       <Editor
         init={{
           skin: false,
